@@ -10,13 +10,13 @@ steps:
   # Clone and update deployment.yaml
   - name: 'gcr.io/cloud-builders/git'
     entrypoint: bash
-    secretEnv: ['github-token']
+    secretEnv: ['GITHUB_TOKEN']
     args:
       - '-c'
       - |
         git config --global user.email "cd-bot@example.com"
         git config --global user.name "cloud-build-cd"
-        git clone https://karthiknayakniveus:${github-token}@github.com/karthiknayakniveus/simple-app-gke-deployment.git
+        git clone https://karthiknayakniveus:${GITHUB_TOKEN}@github.com/karthiknayakniveus/simple-app-gke-deployment.git
         cd simple-app-gke-deployment
         sed -i 's|image: .*|image: asia-south1-docker.pkg.dev/opensourcetools-poc/gke-simple-app/flask-persist-app:'"$SHORT_SHA"'|' app-deployment.yaml
         git commit -am "CD: Update image to $SHORT_SHA"
@@ -26,7 +26,7 @@ steps:
 availableSecrets:
   secretManager:
     - versionName: projects/202701474221/secrets/github-token
-      env: github-token
+      env: GITHUB_TOKEN
 
 options:
   logging: CLOUD_LOGGING_ONLY
