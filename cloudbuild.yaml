@@ -15,17 +15,17 @@ steps:
       - |
         git config --global user.email "cd-bot@example.com"
         git config --global user.name "cloud-build-cd"
-        git clone https://karthiknayakniveus:${_GITHUB_TOKEN}@github.com/karthiknayakniveus/simple-app-gke-deployment.git
+        git clone https://karthiknayakniveus:${GITHUB_TOKEN}@github.com/karthiknayakniveus/simple-app-gke-deployment.git
         cd simple-app-gke-deployment
         sed -i 's|image: .*|image: asia-south1-docker.pkg.dev/opensourcetools-poc/gke-simple-app/flask-persist-app:'"$SHORT_SHA"'|' app-deployment.yaml
         git commit -am "CD: Update image to $SHORT_SHA"
         git push origin main
 
 
-# availableSecrets:
-#   secretManager:
-#   - versionName: projects/opensourcetools-poc/secrets/github-token/versions/latest
-#     env: 'GITHUB_TOKEN'
+availableSecrets:
+  secretManager:
+  - versionName: projects/opensourcetools-poc/secrets/github-token/versions/latest
+    env: 'GITHUB_TOKEN'
 
 options:
   logging: CLOUD_LOGGING_ONLY
