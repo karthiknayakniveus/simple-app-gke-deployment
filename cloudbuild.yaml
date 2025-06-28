@@ -26,7 +26,13 @@ steps:
         cd simple-app-gke-deployment
         sed -i 's|image: .*|image: asia-south1-docker.pkg.dev/opensourcetools-poc/gke-simple-app/flask-persist-app:'"$SHORT_SHA"'|' app-deployment.yaml
         git commit -am "CD: Update image to $SHORT_SHA"
-        git push origin main
+        sed -i 's|image: .*|image: asia-south1-docker.pkg.dev/opensourcetools-poc/gke-simple-app/flask-persist-app:'"$SHORT_SHA"'|' app-deployment.yaml
+        if git diff --quiet; then
+          echo "No changes to commit."
+        else
+          git commit -am "CD: Update image to $SHORT_SHA"
+          git push origin main
+        fi
 
 availableSecrets:
   secretManager:
