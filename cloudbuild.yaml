@@ -10,6 +10,7 @@ steps:
   # Clone and update deployment.yaml
   - name: 'gcr.io/cloud-builders/git'
     entrypoint: bash
+    secretEnv: ['github-token']
     args:
       - '-c'
       - |
