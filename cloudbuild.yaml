@@ -1,9 +1,11 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'asia-south1-docker.pkg.dev/prj-v2-shared-svc-cb/repo-v2-ss-as1-microsecvices/api-tracing:latest', '.']
+    args: ['build', '-t', 'asia-south1-docker.pkg.dev/opensourcetools-poc/gke-simple-app/flask-persist-app:latest', '.']
+
 images:
-  - 'asia-south1-docker.pkg.dev/prj-v2-shared-svc-cb/repo-v2-ss-as1-microsecvices/api-tracing:latest'
+  - 'asia-south1-docker.pkg.dev/opensourcetools-poc/gke-simple-app/flask-persist-app:latest'
 
 options:
-  logging: LEGACY
+  logging: CLOUD_LOGGING_ONLY
+
 logsBucket: gs://test-bucket-124283
