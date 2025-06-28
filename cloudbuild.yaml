@@ -1,0 +1,5 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'asia-south1-docker.pkg.dev/prj-v2-shared-svc-cb/repo-v2-ss-as1-microsecvices/api-tracing', '.']
+images:
+  - 'asia-south1-docker.pkg.dev/prj-v2-shared-svc-cb/repo-v2-ss-as1-microsecvices/api-tracing'
