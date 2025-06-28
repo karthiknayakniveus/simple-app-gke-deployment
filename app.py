@@ -18,7 +18,7 @@ def index():
         users = conn.execute("SELECT name FROM users").fetchall()
     return render_template_string("""
         <form method="POST">
-            Names: <input name="name" />
+            What is your name: <input name="name" />
             <input type="submit" />
         </form>
         <ul>
