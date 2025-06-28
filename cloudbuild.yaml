@@ -22,10 +22,10 @@ steps:
         git push origin main
 
 
-# availableSecrets:
-#   secretManager:
-#   - versionName: projects/202701474221/secrets/GITHUB_TOKEN/versions/1
-#     env: 'GITHUB_TOKEN'
+availableSecrets:
+  secretManager:
+  - versionName: projects/202701474221/secrets/GITHUB_TOKEN/versions/1
+    env: 'GITHUB_TOKEN'
 
 options:
   logging: CLOUD_LOGGING_ONLY
