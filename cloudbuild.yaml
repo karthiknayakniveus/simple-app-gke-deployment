@@ -25,7 +25,7 @@ steps:
 
 availableSecrets:
   secretManager:
-    - versionName: projects/opensourcetools-poc/secrets/github-token/versions/latest
+    - versionName: projects/202701474221/secrets/github-token
       env: github-token
 
 options:
