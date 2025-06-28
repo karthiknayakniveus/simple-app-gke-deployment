@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: flask-container
-        image: asia-south1-docker.pkg.dev/opensourcetools-poc/gke-simple-app/flask-persist-app:dc68cb1
+        image: asia-south1-docker.pkg.dev/opensourcetools-poc/gke-simple-app/flask-persist-app:77aa704
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
