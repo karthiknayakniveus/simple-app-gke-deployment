@@ -7,7 +7,7 @@ steps:
       - 'asia-south1-docker.pkg.dev/opensourcetools-poc/gke-simple-app/flask-persist-app:$SHORT_SHA'
       - '.'
 
-  # Step 2: Push Docker image
+  # Step 2: Push Docker images
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
