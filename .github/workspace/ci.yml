@@ -18,7 +18,7 @@ jobs:
       - name: Run Tests
         run: echo "Running tests..."
 
-      # Step 3: Send Slack Notification (always runs)
+      # Step 3: Send Slack Notifications (always runs)
       - name: Send Slack Notification
         if: always()   # ensures it runs even if job fails
         uses: slackapi/slack-github-action@v1.24.0
