@@ -7,13 +7,13 @@ steps:
       - 'asia-south1-docker.pkg.dev/opensourcetools-poc/gke-simple-app/flask-persist-app:$SHORT_SHA'
       - '.'
 
-  # Step 2: Push Docker images
+  # Step 2: Push Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
       - 'asia-south1-docker.pkg.dev/opensourcetools-poc/gke-simple-app/flask-persist-app:$SHORT_SHA'
 
-  # Step 3: Clone repo and update deployment.yaml
+  # Step 3: Clone repo and update deployment.yaml 
   - name: 'gcr.io/cloud-builders/git'
     entrypoint: bash
     secretEnv: ['_GITHUB_TOKEN']
