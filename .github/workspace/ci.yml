@@ -1,32 +1,31 @@
 name: CI with Slack Notification
 
-# When workflow runs (you can adjust as needed)
 on:
   push:
-    branches: ["main"]     # runs on every push to main
-  pull_request:            # runs on every pull request
+    branches: ["main"]
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout your code
+      # Step 1: Checkout code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Run some commands (tests, build, etc.)
+      # Step 2: Run tests (example)
       - name: Run Tests
         run: echo "Running tests..."
 
-      # Step 3: Send Slack Notification (important part!)
+      # Step 3: Send Slack Notification (always runs)
       - name: Send Slack Notification
-        if: always()   # ensures it runs even if earlier steps fail
+        if: always()   # ensures it runs even if job fails
         uses: slackapi/slack-github-action@v1.24.0
         with:
           payload: |
             {
-              "text": "🚀 GitHub Action finished!\nRepository: ${{ github.repository }}\nStatus: ${{ job.status }}\nCommit: ${{ github.sha }}"
+              "text": "🚀 GitHub Action finished!\nRepository: ${{ github.repository }}\nWorkflow: ${{ github.workflow }}\nJob: ${{ github.job }}\nStatus: ${{ job.status }}\nCommit: ${{ github.sha }}\nBy: ${{ github.actor }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
